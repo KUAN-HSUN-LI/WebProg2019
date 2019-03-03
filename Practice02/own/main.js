@@ -1,8 +1,13 @@
-var imgs = ["http://livedoor.blogimg.jp/ren_ka_blog/imgs/1/3/130bdb0c.png", 
-"https://img.moegirl.org/common/9/97/GC_meizhongjian.jpg", 
-"https://uploads.disquscdn.com/images/4d5ed32f4e04aec026ec350333705bd77ad6082e87488f47cc2c8339aa5b4ec9.jpg",
+var loading = "./images/loading.gif"
+var imgs = ["https://uploads.disquscdn.com/images/4d5ed32f4e04aec026ec350333705bd77ad6082e87488f47cc2c8339aa5b4ec9.jpg",
+"https://i.imgur.com/tTJxt5E.png", 
+"https://img.moegirl.org/common/9/97/GC_meizhongjian.jpg",
 "https://scontent.ftpe7-2.fna.fbcdn.net/v/t1.15752-9/52977071_410050456480025_6646796468512358400_n.jpg?_nc_cat=104&_nc_ht=scontent.ftpe7-2.fna&oh=8e7bac6ae4c02acd3382bdd2030155cc&oe=5CE3A6C6",
-"https://i.imgur.com/7Ibwd2a.jpg"]
+"https://i.imgur.com/7Ibwd2a.jpg",
+"https://pic.pimg.tw/always1027/1419314490-2806041304_n.jpg",
+"https://images.alphacoders.com/719/thumb-1920-719514.png",
+"https://i.pinimg.com/originals/6e/6d/a2/6e6da227e499dc24911b2b0d1c47e87c.jpg",
+"https://wallpapers-all.com/uploads/posts/2017-03/14_clockwork_planet.jpg"]
 var count = 0
 img = document.getElementById("display")
 url = document.getElementById("URL")
@@ -36,8 +41,11 @@ endImg = function(){
     count = imgs.length-1
     adj()
 }
-
+load = function(){
+    img.src= loading
+}
 adj = function(){
+    load()
     if(count == 0){
         backIcon.classList.add("disabled")
         topIcon .classList.add("disabled")
@@ -57,4 +65,5 @@ adj = function(){
     img.src       = imgs[count]
     url.innerHTML = imgs[count]
     now.innerHTML= count+1
+    img.id        = "display"
 }
