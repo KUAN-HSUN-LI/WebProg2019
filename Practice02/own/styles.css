@@ -86,6 +86,7 @@ body {
 
 #display {
 	display: absolute;
+	/* position: absolute; */
 	object-fit: contain;
 	width: 50rem;
 	height: 30rem;
@@ -95,7 +96,7 @@ body {
 
 #loading {
 	display: absolute;
-	position: absolute;
+	/* position: absolute; */
 	object-fit: contain;
 	width: 50rem;
 	height: 10rem;
