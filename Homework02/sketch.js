@@ -21,6 +21,7 @@ let numW, numH;
 let dead, flag;
 let stop;
 let tempVy;
+let stay;
 // assets from: https://github.com/sourabhv/FlapPyBird/tree/master/assets
 
 function preload() {
@@ -72,12 +73,12 @@ function setup() {
     pipeH = pipe[0].height * 1.5;
     pipeX1 = window.width;
     pipeX2 = window.width * 1.5 + pipeW * 0.5;
-    pipeY1 = Math.floor(Math.random() * 300) + baseH;
-    pipeY2 = Math.floor(Math.random() * 300) + baseH;
+    pipeY1 = Math.floor((Math.random() - 0.5) * 100) + baseH + 200;
+    pipeY2 = Math.floor((Math.random() - 0.5) * 100) + baseH + 200;
     pipe1Up_Down = pipeY1 + pipeH - 585;
-    pipe1Low_Top = pipeY1 + 15;
+    pipe1Low_Top = pipeY1;
     pipe2Up_Down = pipeY2 + pipeH - 585;
-    pipe2Low_Top = pipeY2 + 15;
+    pipe2Low_Top = pipeY2;
     pipe1Right = pipeX1 + pipeW;
     pipe2Right = pipeX2 + pipeW;
     start = false;
@@ -89,6 +90,7 @@ function setup() {
     flag = false;
     stop = false;
     tempVy = null;
+    stay = 550;
 }
 
 function draw() {
@@ -182,15 +184,23 @@ function drawBase() {
 }
 
 function drawPipe() {
+    let range;
+    if (score < 10) {
+        range = 100;
+    } else if (score < 50) {
+        range = score * 1 + 100;
+    } else {
+        range = score * 2 + 100;
+    }
     if (pipeX1 <= -pipeW) {
         pipeX1 = window.width;
-        pipeY1 = Math.floor(Math.random() * 300) + baseH;
+        pipeY1 = Math.floor((Math.random() - 0.5) * range) + baseH + 200;
         pipe1Up_Down = pipeY1 + pipeH - 585;
         pipe1Low_Top = pipeY1 + 15;
     }
     if (pipeX2 <= -pipeW) {
         pipeX2 = window.width;
-        pipeY2 = Math.floor(Math.random() * 300) + baseH;
+        pipeY2 = Math.floor((Math.random() - 0.5) * range) + baseH + 200;
         pipe2Up_Down = pipeY2 + pipeH - 585;
         pipe2Low_Top = pipeY2 + 15;
     }
@@ -205,22 +215,30 @@ function drawPipe() {
 }
 
 function die() {
-    if (birdY <= 0 || Math.abs(birdY - window.height + baseH + birdH) <= 20) {
+    // let pos = 550;
+    // console.log(birdY, pipe1Low_Top);
+    if (birdY <= 0 || Math.abs(birdY - window.height + baseH + birdH) <= 100) {
+        stay = 550;
         flag = true;
     } else if (birdRight == pipeX1 && (birdY + birdH > pipe1Low_Top || birdY < pipe1Up_Down)) {
+        stay = 550;
         flag = true;
     } else if (birdRight > pipeX1 && birdX < pipeX1 + pipeW && (birdY + birdH > pipe1Low_Top || birdY < pipe1Up_Down)) {
+        stay = pipe1Low_Top - birdH - 5;
         flag = true;
     } else if (birdRight == pipeX2 && (birdY + birdH > pipe2Low_Top || birdY < pipe2Up_Down)) {
+        stay = 550;
         flag = true;
     } else if (birdRight > pipeX2 && birdX < pipeX2 + pipeW && (birdY + birdH > pipe2Low_Top || birdY < pipe2Up_Down)) {
+        stay = pipe2Low_Top - birdH - 5;
         flag = true;
     }
+    // console.log(stay);
     if (!dead && flag) {
         hitSound.play();
         dieSound.play();
         dead = true;
-        setTimeout(setup, 5000);
+        setTimeout(setup, 2500);
     }
     if (flag) {
         image(
@@ -233,8 +251,12 @@ function die() {
         x1 += 2;
         pipeX1 += 2;
         pipeX2 += 2;
-        if (Math.abs(birdY - window.height + baseH + birdH) <= 20) {
-            birdY = 550;
+        if (birdY != stay) {
+            birdX = birdX + birdW * 0.015;
+        }
+        if (Math.abs(birdY - stay) <= 20) {
+            console.log('in');
+            birdY = stay;
             ay = 0;
             vy = 0;
             triAng -= 0.03;
@@ -268,10 +290,10 @@ function displayScore() {
         }
     } else {
         if (score < 10) {
-            image(num[score], window.width / 2, 300, numW, numH);
+            image(num[score], window.width / 2, 200, numW, numH);
         } else if (score >= 10 && score < 100) {
-            image(num[Math.floor(score / 10)], window.width / 2 - 20, 300, numW, numH);
-            image(num[score % 10], window.width / 2 + 20, 300, numW, numH);
+            image(num[Math.floor(score / 10)], window.width / 2 - 20, 200, numW, numH);
+            image(num[score % 10], window.width / 2 + 20, 200, numW, numH);
         }
     }
 }
