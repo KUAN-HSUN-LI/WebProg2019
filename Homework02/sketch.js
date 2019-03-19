@@ -18,7 +18,9 @@ let gameOver;
 let wingSound, hitSound, dieSound, pointSound;
 let score;
 let numW, numH;
-let dead;
+let dead, flag;
+let stop;
+let tempVy;
 // assets from: https://github.com/sourabhv/FlapPyBird/tree/master/assets
 
 function preload() {
@@ -84,10 +86,14 @@ function setup() {
     numW = num[0].width * 1.5;
     numH = num[0].height * 1.5;
     dead = false;
+    flag = false;
+    stop = false;
+    tempVy = null;
 }
 
 function draw() {
     // Render function (called per frame.)
+    pause();
     backGround();
     if (start) {
         drawPipe();
@@ -108,9 +114,33 @@ function keyPressed() {
         vy = -3;
         triAng = -PI / 4;
         wingSound.play();
+        if (stop) {
+            stop = false;
+        }
+    }
+    if (keyCode == 83 && !dead) {
+        console.log(123);
+        stop ? (stop = false) : (stop = true);
     }
 }
-
+function pause() {
+    if (stop) {
+        if (tempVy === null) {
+            tempVy = vy;
+        }
+        vy = 0;
+        vy -= ay * 0.02;
+        x1 += 2;
+        pipeX1 += 2;
+        pipeX2 += 2;
+        triAng -= 0.03;
+    } else {
+        if (tempVy != null) {
+            vy = tempVy;
+            tempVy = null;
+        }
+    }
+}
 function backGround() {
     x1 -= 2;
     vx += 1;
@@ -175,7 +205,6 @@ function drawPipe() {
 }
 
 function die() {
-    let flag = false;
     if (birdY <= 0 || Math.abs(birdY - window.height + baseH + birdH) <= 20) {
         flag = true;
     } else if (birdRight == pipeX1 && (birdY + birdH > pipe1Low_Top || birdY < pipe1Up_Down)) {
