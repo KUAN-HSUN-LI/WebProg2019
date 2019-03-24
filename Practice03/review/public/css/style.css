@@ -1,0 +1,215 @@
+/* TODO: 加入Google font Raleway分別載入字重100,400,700 */
+
+/*==================== general ====================*/
+
+body {
+    background-color: #1E3C4B;
+    min-height: 1000px;
+    /* TODO: 設定背景圖 */
+    background-image: url("../img/cork-repeat.jpg");
+}
+
+/* TODO: 設定透視 */
+
+.card {
+    width: 600px;
+    margin: 100px auto;
+}
+
+.card>.upper-section,
+.card>.lower-section {
+    padding: 20px 20px;
+    position: relative;
+}
+
+/*==================== fonts ====================*/
+
+* {
+    color: #333;
+    
+}
+
+.dish-name {
+    font-size: 75px;
+    letter-spacing: 8px;
+    font-weight: 700;
+    font-style: italic;
+    text-shadow: 0px 0px 10px rgb(141, 141, 141), 0px 0px 10px rgb(141, 141, 141), 0px 0px 10px rgb(141, 141, 141);
+    margin: 0;
+    font-family: AmeryBrush;
+    
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: 100;
+    letter-spacing: 5px;
+    margin: 0;
+    
+}
+
+/*==================== upper-section ====================*/
+
+.upper-section {
+    background-color: white;
+    height: 220px;
+    z-index: 5;
+    color: white;
+    /* TODO: 設定背景圖 */
+    background-image: url(../img/salmon-steak.jpg);
+    background-size: cover;
+    /* TODO: 預設向後折 */
+    /* TODO: 設定filter屬性控制照片明亮與飽和度 */
+    filter:brightness(1.2) grayscale(1%);
+    transition: all 1s ease;
+    transform: rotateX(25deg);
+    transform-origin: bottom;
+}
+.upper-section:hover
+{
+    transform:rotateX(0deg);
+    filter:grayscale(0%);
+}
+
+.upper-section .text {
+    margin-top: 80px;
+}
+
+.upper-section * {
+    /* color: white; */
+    color: #ae63e4;
+}
+
+.upper-section p {
+    margin: 0;
+}
+
+.price {
+    margin-top: 0px;
+    font-style: italic;
+    font-size: 18px;
+    font-weight: 100;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    /* TODO: 設定預設為透明 */
+    /* TODO: 顯示$在價格前，並顯示貨幣單位於價格後 */
+    opacity: 0;
+}
+.price::before
+{
+    content:"$";
+    margin-right: 8px;
+}
+.price::after
+{
+    content: "NTD";
+    margin-left: 8px;
+}
+/*==================== note lower-section ====================*/
+
+.lower-section {
+    background-color: white;
+    z-index: 1;
+    /* TODO: 預設向後折 */
+    transform: rotateX(-95deg);
+    transform-origin: top;
+}
+
+.ingredients {
+    list-style: none;
+    padding-left: 0;
+}
+
+.ingredients>li {
+    font-size: 18px;
+    /* TODO: 設定每個li高度為40px並且垂直置中文字 */
+    height:40px;
+    line-height:40px;
+    /* TODO: 設定底部的框線 #dbdbdb */
+    padding-left:40px;
+    border-bottom: 1px dashed #dbdbdb;
+    /* TODO: 設定滑鼠游標樣式讓使用者知道是可以點選的 */
+    /* TODO: 利用偽元素設計checklist點擊圖樣 */
+    /* background: yellow; */
+    position:relative;
+    cursor:pointer;
+}
+.ingredients>li:hover
+{
+    background:#ddd;
+}
+.ingredients>li::before
+{
+    content:"";
+    width:20px;
+    height: 20px;  
+    border:1px solid blueviolet;
+    border-radius: 4px;
+    display: block;
+    /* 換成absolute就不會佔據空間了，因此可以重疊 */
+    position: absolute;
+    left:10px;
+    top:0px;
+    bottom: 0;
+    margin:auto 0;
+}
+.ingredients>li.done:before
+{
+    background-image: url(../img/checked.svg);
+    background-repeat: no-repeat;
+    background-position:center center;
+}
+/*==================== animation ====================*/
+.environment
+{
+    perspective: 1500px;
+}
+/* TODO: 設定.card:hover動畫的transition */
+.upper-section,.lower-section,.price
+{
+    transition: all 0.5s ease;
+}
+/* 當.card:hover時，設定其中的.upper-section和.lower-section折回原本的角度。 */
+.card:hover .upper-section,.card:hover>.lower-section
+{
+    transform: rotateX(0deg);
+}
+
+/* TODO: 設定.card:hover後折回的3D動畫 */
+
+/* TODO: 設定.card:hover後顯示price 並加大margin-top */
+.card:hover .price
+{
+    color: aqua;
+    opacity: 1;
+    margin-top:10px;
+}
+
+/* 以下的case只有在裝置寬度小於等於576px才適用 */
+@media(max-width:576px)
+{
+    /* 關於手機板的選擇器都在這裡 */
+    .dish-name
+    {
+        font-size: 28px;
+    }
+    .upper-section,.lower-section
+    {
+        transform: rotateX(0deg);
+        filter: brightness(1) grayscale(0%);
+    }
+    .price
+    {
+        opacity:1;
+    }
+    .card .price
+    {
+        color: aqua;
+        opacity: 1;
+        margin-top:10px;
+    }
+    .card
+    {
+        width:calc(100% - 30px);
+        margin:30px auto;
+    }
+}
