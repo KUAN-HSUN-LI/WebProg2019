@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 
 class App extends Component {
+    // constructor(props) {
+    //     {
+    //         super(props);
+    //         // console.log(props.children);
+    //         // console.log(props.children.props.test);
+    //     }
+    // }
     render() {
         return (
             <body id="page-top" className="index">
+                {/* <Test /> */}
                 {/* <Navigation /> */}
 
                 <nav id="mainNav" className="navbar navbar-default navbar-custom navbar-fixed-top">
@@ -17,7 +25,7 @@ class App extends Component {
                         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul className="nav navbar-nav navbar-right" id="test">
                                 {this.props.index.map(e => (
-                                    <li>
+                                    <li key={e}>
                                         <a className="page-scroll" href="#services">
                                             {e}
                                         </a>
@@ -39,7 +47,7 @@ class App extends Component {
 
                         <div className="row text-center">
                             {this.props.services.head.map((value, index) => (
-                                <div className="col-md-4">
+                                <div className="col-md-4" key={value}>
                                     <span className="fa-stack fa-4x">
                                         <i className="fa fa-circle fa-stack-2x text-primary" />
                                         <i className="fa fa-shopping-cart fa-stack-1x fa-inverse" />
@@ -60,6 +68,21 @@ class App extends Component {
         );
     }
 }
+
+// class Test extends Component {
+//     // constructor(props) {
+//     //     super(props);
+//     //     // console.log(props);
+//     // }
+//     render() {
+//         return (
+//             <p id="test">
+//                 1<p id="test2">{this.props.test}123</p>
+//             </p>
+//         );
+//     }
+// }
+
 // const index1 = ['Services', 'Portfolio', 'About', 'Team', 'Contact'];
 
 // class Navigation extends Component {
@@ -632,4 +655,4 @@ class Contact extends Component {
 }
 
 export default App;
-// export { Navigation };
+// export { Test };
