@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>TODO APP in pure JS</title>
-        <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
-    </head>
-    <body>
-        <div class="todo-app__root" id="root">
-            <div class="todo-app__header">
-                <header class="todo-app__title">todos</header>
-            </div>
-            <section class="todo-app__main">
-                <input type="text" placeholder="What need to be done?" class="todo-app__input" id="todo-input" />
-                <ul class="todo-app__list" id="todo-list"></ul>
-            </section>
-            <footer class="todo-app__footer" id="todo-footer">
-                <div class="todo-app__total">
-                    <p><span id="todo-app__totalNum">0</span> left</p>
-                </div>
-                <ul class="todo-app__view-buttons">
-                    <button onclick="All()" id="all">All</button>
-                    <button onclick="Active()" id="active">Active</button>
-                    <button onclick="Completed()" id="completed">Completed</button>
-                </ul>
-                <div class="todo-app__clean">
-                    <button id="clear" onclick="clearCompleted()">Clear completed</button>
-                    <button id="clear" onclick="clearAll()">Clear all</button>
-                </div>
-            </footer>
-        </div>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>TODO APP in pure JS</title>
+		<link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
+	</head>
+	<body>
+		<div class="todo-app__root" id="root">
+			<div class="todo-app__header">
+				<header class="todo-app__title">todos</header>
+			</div>
+			<section class="todo-app__main">
+				<input type="text" placeholder="What need to be done?" class="todo-app__input" id="todo-input" />
+				<ul class="todo-app__list" id="todo-list"></ul>
+			</section>
+			<footer class="todo-app__footer" id="todo-footer">
+				<div class="todo-app__total">
+					<p><span id="todo-app__totalNum">0</span> left</p>
+				</div>
+				<ul class="todo-app__view-buttons">
+					<button onclick="All()" id="all">All</button>
+					<button onclick="Active()" id="active">Active</button>
+					<button onclick="Completed()" id="completed">Completed</button>
+				</ul>
+				<div class="todo-app__clean">
+					<button id="clear" onclick="clearCompleted()">Clear completed</button>
+					<button id="clear" onclick="clearAll()">Clear all</button>
+				</div>
+			</footer>
+		</div>
 
-        <script src="main.js"></script>
-    </body>
+		<script src="main.js"></script>
+	</body>
 </html>

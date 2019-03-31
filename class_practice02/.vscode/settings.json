@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.js": "javascriptreact",
+        "*.tcc": "cpp",
+        "cmath": "cpp"
+    }
+}
