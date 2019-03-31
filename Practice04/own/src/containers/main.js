@@ -3,7 +3,6 @@ import Input from "../components/input";
 import Item from "../components/item";
 import Button from "../components/button";
 
-import Footer from "./footer";
 class Main extends Component {
 	constructor() {
 		super();
@@ -77,16 +76,18 @@ class Main extends Component {
 	handleAll = () => {
 		this.btnClear("all");
 		this.state.mode = 0;
-		// console.log(this.props.data.mode);
+		this.setState(this.state.mode);
 	};
 
 	handleActive = () => {
 		this.btnClear("active");
 		this.state.mode = 1;
+		this.setState(this.state.mode);
 	};
 	handleCompleted = () => {
 		this.btnClear("completed");
 		this.state.mode = 2;
+		this.setState(this.state.mode);
 	};
 
 	handleClearAll = () => {};
