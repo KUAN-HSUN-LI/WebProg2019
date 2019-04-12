@@ -45,6 +45,7 @@ class CalcApp extends React.Component {
 			now += e;
 		}
 		this.setState({ now });
+		console.log(this.state);
 	}
 
 	operator(e) {
@@ -62,6 +63,7 @@ class CalcApp extends React.Component {
 	}
 
 	calc() {
+		console.log(this.state);
 		const operator = this.state.storedOperator;
 		let storedValue = this.state.storedValue;
 		if (!this.state.storedValue) {
@@ -82,13 +84,15 @@ class CalcApp extends React.Component {
 
 	equal() {
 		let now = this.state.now;
+		console.log(this.state);
 		if (!this.state.storedValue) {
-			this.setState(state => ({ storedValue: state.now }));
+			this.setState({ storedValue: this.state.now });
 		}
 		if (!(this.state.mode === 2)) {
 			this.setState({ storedValue: now });
 		}
 		let ans = this.calc();
+		console.log(ans);
 		if (!Number.isInteger(ans)) ans = ans.toFixed(2);
 		this.setState({ now: ans });
 		this.setState({ mode: 2 });
