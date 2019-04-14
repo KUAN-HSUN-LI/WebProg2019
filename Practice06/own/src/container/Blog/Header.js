@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, Switch, Route, Redirect } from "react-router-dom";
 import Posts from "./Posts/Posts";
-import Blog from "./Blog";
+import Blog from "./Main";
 export default () => {
 	console.log(Posts);
 	return (
