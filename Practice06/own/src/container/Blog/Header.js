@@ -1,9 +1,8 @@
 import React from "react";
 import { NavLink, Switch, Route, Redirect } from "react-router-dom";
 import Posts from "./Posts/Posts";
-import Blog from "./Blog";
+
 export default () => {
-	console.log(Posts);
 	return (
 		<div>
 			<header>

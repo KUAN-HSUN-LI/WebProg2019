@@ -311,6 +311,7 @@ section h3.section-subheading {
 	margin: 0 0 15px;
 	right: 0;
 }
+
 #portfolio .portfolio-item .portfolio-link {
 	display: block;
 	position: relative;
@@ -353,6 +354,10 @@ section h3.section-subheading {
 	background-color: white;
 	text-align: center;
 	padding: 25px;
+}
+#portfolio .portfolio-item .portfolio-caption:hover {
+	background-color: rgb(195, 238, 255);
+	cursor: pointer;
 }
 #portfolio .portfolio-item .portfolio-caption h4 {
 	text-transform: none;
