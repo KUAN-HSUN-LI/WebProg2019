@@ -1,0 +1,11 @@
+.tag {
+    margin-left: 10px;
+  }
+
+.ellipsis {
+    display: block;
+    display: -webkit-box;
+    max-height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
