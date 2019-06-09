@@ -27,6 +27,16 @@ class App extends Component {
 				body: formBody,
 				published: true,
 				authorId: formName,
+				date:
+					new Date().getUTCFullYear() +
+					'-' +
+					new Date().getMonth() +
+					'-' +
+					new Date().getDate() +
+					'-' +
+					new Date().getHours() +
+					':' +
+					new Date().getMinutes(),
 			},
 		});
 

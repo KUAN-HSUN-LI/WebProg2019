@@ -27,6 +27,7 @@ const posts = [
 		body: 'This is how to use GraphQL...',
 		published: true,
 		author: '1',
+		date: '2019-6-09-14:00',
 	},
 	{
 		id: '11',
@@ -34,6 +35,7 @@ const posts = [
 		body: 'This is an advanced GraphQL post...',
 		published: false,
 		author: '1',
+		date: '2019-6-09-14:00',
 	},
 	{
 		id: '12',
@@ -41,6 +43,7 @@ const posts = [
 		body: '',
 		published: true,
 		author: '2',
+		date: '2019-6-09-14:00',
 	},
 ];
 

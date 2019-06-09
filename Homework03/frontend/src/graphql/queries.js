@@ -9,6 +9,7 @@ export const POSTS_QUERY = gql`
 				name
 			}
 			published
+			date
 		}
 	}
 `;
@@ -26,6 +27,7 @@ export const USERS_QUERY = gql`
 					name
 				}
 				published
+				date
 			}
 		}
 	}
