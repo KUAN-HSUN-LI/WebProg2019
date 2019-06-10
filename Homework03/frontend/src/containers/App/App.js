@@ -20,7 +20,7 @@ class App extends Component {
 
 		const { formTitle, formBody, formName } = this.state;
 
-		if (!formTitle || !formBody) return;
+		if (!formTitle || !formBody || !formName) return;
 		this.createPost({
 			variables: {
 				title: formTitle,
